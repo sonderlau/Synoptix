@@ -46,6 +46,10 @@ class CriticalSuccessIndex(Metric):
             return torch.tensor(0.0)
 
 
+    def __str__(self):
+        return f"CSI@{self.threshold:.3f}"
+
+
 class CriticalSuccessIndexMean(Metric):
     def __init__(self, thresholds: Tuple[float, ...], pooling_size: int = 1):
         super().__init__()
@@ -80,3 +84,6 @@ class CriticalSuccessIndexMean(Metric):
         csi_per_threshold = self.tp / (self.tp + self.fn + self.fp + eps)
 
         return csi_per_threshold.mean()
+
+    def __str__(self):
+        return f"CSI@Mean"

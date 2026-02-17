@@ -35,6 +35,9 @@ class HeidkeSkillScore(Metric):
 
         return hss.mean()
 
+    def __str__(self):
+        return f"HSS@{self.threshold:.3f}"
+
 
 class HeidkeSkillScoreMean(Metric):
 
@@ -67,3 +70,6 @@ class HeidkeSkillScoreMean(Metric):
         hss = numerator.float() / (denominator.float() + eps)
 
         return hss.mean()
+
+    def __str__(self):
+        return f"HSS@Mean"
